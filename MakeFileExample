@@ -1,0 +1,23 @@
+CXX=g++
+
+LINKS=-L/usr/lib/erlang/lib/erl_interface-3.7.7/lib -L/usr/lib/happycoders -ldl -lk3lclient
+ -lerl_interface -lei -lsocket -lnsl -lpthread
+DEPS = $(wildcard *.h) #-I/home/kuhnen/Khomp/KTools/3.0/
+CFLAGS= -Wall -g -std=c++11 $(LINKS) 
+SRC = $(wildcard *.cpp)
+OBJ = $(SRC:.cpp=.o)
+
+EXEC=cnode
+
+all: $(EXEC)
+
+%.o: %.cpp 
+  $(CXX) -c -o $@ $< $(CFLAGS)
+
+cnode: $(OBJ)
+	$(CXX) -o cnode $(OBJ) $(CFLAGS) 
+
+clean:
+	rm *.o
+run: $(EXEC)
+	./$(EXEC)

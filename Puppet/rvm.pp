@@ -14,7 +14,7 @@ define rvm_for(
         #cwd => $cwd,
         #creates => "/home/kuhnen/.rvm",
         #require => $require,
-        unless => "! [ -d '/home/kuhnen/.rvm' ]"
+        unless => "! [ -d '/home/kuhnen/.rvm' ]",
         logoutput => true,
 
     }
@@ -25,7 +25,7 @@ exec {'oh-my-zsh':
   command => "curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh",
   logoutput => true,
   require => Package['zsh'],
-  unless => "! [ -d '/home/kuhnen/.oh-my-zsh' ]"
+  unless => "! [ -d '/home/kuhnen/.oh-my-zsh' ]",
 }
 
 exec {'echo "@terminator\n@skype\n@chromium-browser" >> /etc/xdg/lxsession/Lubuntu/autostart':

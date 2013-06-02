@@ -25,6 +25,9 @@ exec {'oh-my-zsh':
   require => Package['zsh'],
 }
 
+exec {'echo "@terminator\n@skype\n@chromium-browser" >> /etc/xdg/lxsession/Lubuntu/autostart':
+
+}
 
 exec{'Sublime':
   command => 'curl -O http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.1%20x64.tar.bz2',

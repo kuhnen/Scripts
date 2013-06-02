@@ -22,6 +22,7 @@ define rvm_for(
 exec {'oh-my-zsh':
   command => "curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh",
   logoutput => true,
+  require => Package['zsh'],
 }
 
 
@@ -29,10 +30,11 @@ exec{'Sublime':
   command => 'curl -O http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.1%20x64.tar.bz2',
   cwd => '/home/kuhnen/Apps',
   require => File['/home/kuhnen/Apps'],
-  unless => 'ls /home/kuhnen/Apps/Sublime Text 2'
+  unless => 'ls /home/kuhnen/Apps/Sublime Text 2',
+  logoutput => true,
 }
 
-package { ["curl", 'scala', 'build-essential', 'terminator', 'vim', 'emacs']:
+package { ["curl", 'scala', 'build-essential', 'terminator', 'vim', 'emacs', 'zsh']:
   ensure => latest,
 }
 

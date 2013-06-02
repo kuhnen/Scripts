@@ -12,7 +12,7 @@ define rvm_for(
     exec { $name:
         command => "curl -L ${site} | bash -s stable --ruby",
         #cwd => $cwd,
-        creates => "/home/kuhnen/.rvm",
+        #creates => "/home/kuhnen/.rvm",
         #require => $require,
         logoutput => true,
     }

@@ -4,8 +4,8 @@ Exec { path => '/usr/bin:/bin:/usr/sbin:/sbin' }
 
 define rvm_for(
         $site="https://get.rvm.io",
-        #$cwd="",
-        #$creates="",
+        $cwd="",
+        $creates="",
         $require=Package["curl"],
         $user=""){
 
@@ -18,15 +18,18 @@ define rvm_for(
     }
 }
 
+
 exec {'oh-my-zsh':
   command => "curl -L https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh | sh",
   logoutput => true,
 }
 
-File {'home/kuhnen/Apps/Sublime':
-  source => 'http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.1%20x64.tar.bz2',
-  ensure => '/home/kuhnen/Apps/Sublime',
 
+exec{'Sublime':
+  command => 'curl -O http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.1%20x64.tar.bz2',
+  cwd => '/home/kuhnen/Apps',
+  require => File['/home/kuhnen/Apps'],
+  unless => 'ls /home/kuhnen/Apps/Sublime Text 2'
 }
 
 package { ["curl", 'scala', 'build-essential', 'terminator', 'vim', 'emacs']:

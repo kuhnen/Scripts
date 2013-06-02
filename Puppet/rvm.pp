@@ -14,7 +14,9 @@ define rvm_for(
         #cwd => $cwd,
         #creates => "/home/kuhnen/.rvm",
         #require => $require,
+        unless => "! [ -d '/home/kuhnen/.rvm' ]"
         logoutput => true,
+
     }
 }
 

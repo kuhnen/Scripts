@@ -4,7 +4,7 @@
 main(_) ->
     {ok, Root} = file:get_cwd(),
     io:format("Root -> ~p~n", [Root]),
-    Dirs = ["ebin", "priv", "src", "test"],
+    Dirs = ["ebin", "priv", "src", "test", "include", "deps"],
     create_dirs(Root++"/", Dirs).
 
 
